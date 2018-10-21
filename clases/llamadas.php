@@ -321,20 +321,31 @@ class Llamadas extends ClaseBase{
 		if ($stmt = DB::conexion()->prepare("SELECT SUBSTRING(fecha_hora_inicial,12,2) as hora, count(SUBSTRING(fecha_hora_inicial,12,2)) as cantidad from llamadas group by hora;")){
 			$stmt->execute();
 			$resultado = $stmt->get_result();
+			$nums = array();
 			while ( $fila = $resultado->fetch_object()){
 				$horas[$fila->hora.":00"] = $fila->cantidad;
+				$nums[] = $fila->hora;
 			}
 
 			$i = 0;
-			foreach ($horas as $h) {
+			for($i = 0; $i < 24; $i++){
+				if(!in_array($i, $nums)){
+					if($i < 10)
+						$key = "0" . $i . ":00";
+					else
+						$key = $i . ":00";
+					$horas[$key] = 0;
+				}
+			}
+			/*foreach ($horas as $h) {
 				if($i < 10)
 					$key = "0" . $i . ":00";
 				else
 					$key = $i . ":00";
-				if(!isset($horas[$key]))
+				if(!isset($h[$key]))
 					$horas[$key] = 0;
 				$i++;
-			}
+			}*/
 		}
 
 		$resultados["meses"] = $meses;
