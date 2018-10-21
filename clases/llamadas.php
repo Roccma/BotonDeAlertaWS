@@ -353,7 +353,7 @@ class Llamadas extends ClaseBase{
 
 		if($cantidadLlamadas > 0){
 			$fecha_desde = $llamadas[0]->fecha_desde;
-			$cantidadDias = 0;
+			$cantidadDias = 1;
 			while($fecha_desde != date('Y-m-d')){
 				//$cantidad2++;
 				$cantidadDias++;
