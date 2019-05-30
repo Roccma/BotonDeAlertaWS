@@ -1,9 +1,8 @@
 <?php
 	define("DB_HOST", "ec2-35-174-8-118.compute-1.amazonaws.com");
-	define("DB_USR", "alerta_user");
-	define("DB_PASS", "al3rt4");
-	define("DB_DB", "demoalerta");
-	//define(DB_TYPE, "mysql");
+	define("DB_USR", "bt_user");
+	define("DB_PASS", "bluet00th.b0x");
+	define("DB_DB", "bt_box");
 
 	$template_config = 
     array(
